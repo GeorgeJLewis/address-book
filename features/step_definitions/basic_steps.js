@@ -1,5 +1,8 @@
-const { Given, Then } = require('cucumber')
+const { After, Given, Then } = require('cucumber')
 
+After(async function() {
+  return await this.closeHomePage()
+})
 Given('I visit the site', async function() {
   return await this.openHomePage()
 })
