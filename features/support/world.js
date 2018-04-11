@@ -6,8 +6,6 @@ const HOME_PAGE = 'http://localhost:3000'
 
 class AddressBookWorld {
   constructor() {}
-
-
   //open the homepage using puppeteer
   //async/await
   async openHomePage() {
@@ -18,6 +16,16 @@ class AddressBookWorld {
 
   async closeHomePage() {
     await this.browser.close()
+  }
+
+  async pageHasTextContent(expectedContent) {
+    const pageContent = await this.page.content()
+    console.log(pageContent)
+    let match = pageContent.match(expectedContent)
+    console.log(match)
+    let actualContent = match[0]
+
+    expect(actualContent).to.be.eq(expectedContent)
   }
 }
 
