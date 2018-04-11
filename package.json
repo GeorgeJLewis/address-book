@@ -2,15 +2,23 @@
   "name": "address-book",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "George_Lewis <georgejlewis@hotmail.com>",
+  "author": "petra_bodman <petra_bodman@hotmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
     "cucumber": "^4.2.1",
     "mocha": "^5.0.5",
     "puppeteer": "^1.2.0",
-    "superstatic": "^5.0.1"
+    "superstatic": "^5.0.1",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
   },
   "scripts": {
-    "cucumber": "superstatic -p 3000 2> /dev/null & cucumber-js && lsof -ti tcp:3000 | xargs kill"
-  }
+    "build": "webpack --progress --p --mode=production",
+    "watch": "webpack --progress --watch --mode=development",
+    "cucumber": "superstatic -p 3000 2> /dev/null & cucumber-js && lsof -ti tcp:3000 |xargs kill"
+  },
 }
