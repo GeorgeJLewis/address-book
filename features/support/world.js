@@ -27,14 +27,14 @@ class AddressBookWorld {
     expect(actualContent).to.be.eq(expectedContent)
   }
 
-  async clickOnAddContactBtn(){
-    const btnSelector = '.add-contact'
+  async clickOnButton(btnName){
+    const btnSelector = this.btnSelectorFormName(btnName.toLowerCase())
     await this.page.waitForSelector(btnSelector)
     await this.page.click(btnSelector)
   }
 
   async fillFormField(field, content) {
-    const inputSelector = `#contact.${field}`
+    const inputSelector = `#contact-${field}`
     await this.page.waitForSelector(inputSelector)
     this.inputElement = await this.page.$(inputSelector)
     await this.inputElement.type(content)
@@ -44,7 +44,7 @@ class AddressBookWorld {
       case 'add contact':
       return '.add-contact'
       break
-      case 'save-contact':
+      case 'save contact':
       return '.save-contact'
       break
       default:
