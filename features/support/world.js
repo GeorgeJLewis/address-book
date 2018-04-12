@@ -21,12 +21,8 @@ class AddressBookWorld {
   }
 
   async pageHasTextContent(expectedContent) {
-    console.log(':: ExpectedContent: ' + expectedContent)
     const pageContent = await this.page.content()
-    console.log(':: PageContent: ' + pageContent)
-    let match = pageContent.match(expectedContent)
-
-    let actualContent = match[0]
+    const actualContent = pageContent.match(expectedContent)[0]
 
     expect(actualContent).to.be.eq(expectedContent)
   }
@@ -42,6 +38,19 @@ class AddressBookWorld {
     await this.page.waitForSelector(inputSelector)
     this.inputElement = await this.page.$(inputSelector)
     await this.inputElement.type(content)
+  }
+  btnSelectorFormName(btnName) {
+    switch (btnName) {
+      case 'add contact':
+      return '.add-contact'
+      break
+      case 'save-contact':
+      return '.save-contact'
+      break
+      default:
+      throw `${btnName} button is not defined`
+      break
+    }
   }
 }
 

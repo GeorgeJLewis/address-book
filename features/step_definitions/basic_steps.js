@@ -9,7 +9,6 @@ Given('I visit the site', async function() {
 })
 
 Then('I should see {string}', async function(content) {
-  console.log(content)
   return await this.pageHasTextContent(content)
 })
 
