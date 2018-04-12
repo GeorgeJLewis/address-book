@@ -39,6 +39,18 @@ class AddressBookWorld {
     this.inputElement = await this.page.$(inputSelector)
     await this.inputElement.type(content)
   }
+
+  async checkContactStorageCount(expectedCount) {
+    const actualCount = await this.page.evaluate(
+      () => {
+         return JSON.parse(window.localStorage.getItem('contacts')).length
+      }
+    )
+    console.log(">>>>>>>> " + actualCount)
+
+    expect(actualCount).to.be.eq(expectedCount)
+  }
+
   btnSelectorFormName(btnName) {
     switch (btnName) {
       case 'add contact':
