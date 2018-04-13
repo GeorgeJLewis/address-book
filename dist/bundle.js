@@ -1,1 +1,86 @@
-!function(e){var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:o})},n.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";var o=window.localStorage;document.addEventListener("DOMContentLoaded",function(){!function(){JSON.parse(o.getItem("contacts"));var e=document.createElement("div"),t=document.querySelector("body");e.innerHTML("<h1></h1>"),t.appendChild(e)}();var e=document.querySelector(".new-contact-form");e.addEventListener("submit",function(t){t.preventDefault();var n=e.elements,r=n.name,a=n.email,c=n.phone,u=n.company,i=n.notes,l=n.twitter,s={id:Date.now(),name:r.value,email:a.value,phone:c.value,company:u.value,notes:i.value,twitter:l.value};console.log(s),console.log("Saving the following contact: "+JSON.stringify(s)),o.setItem("contacts",JSON.stringify([s]))})})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/app.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/app.js":
+/*!********************!*\
+  !*** ./src/app.js ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar storage = window.localStorage;\nvar renderContacts = function renderContacts() {\n  var contacts = JSON.parse(storage.getItem('contacts'));\n  if (contacts) {\n    var ul = document.createElement('ul');\n    contacts.forEach(function (contact) {\n      var li = document.createElement('li');\n      li.innerHTML = '\\n      <span>' + contact.name + '</span> |\\n      <span>' + contact.email + '</span> |\\n      <span>' + contact.phone + '</span>\\n      ';\n      ul.appendChild(li);\n    });\n    div.appendChild(ul);\n  } else {\n    div.innerHTML = '<p>You have no contacts in your address book</p>';\n  }\n};\n//let div = document.createElement('.contact-list')\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  renderContacts();\n  var addContactForm = document.querySelector('.new-contact-form');\n\n  addContactForm.addEventListener('submit', function (event) {\n    event.preventDefault();\n\n    var _addContactForm$eleme = addContactForm.elements,\n        name = _addContactForm$eleme.name,\n        email = _addContactForm$eleme.email,\n        phone = _addContactForm$eleme.phone,\n        company = _addContactForm$eleme.company,\n        notes = _addContactForm$eleme.notes,\n        twitter = _addContactForm$eleme.twitter;\n\n\n    var contact = {\n      id: Date.now(),\n      name: name.value,\n      email: email.value,\n      phone: phone.value,\n      company: company.value,\n      notes: notes.value,\n      twitter: twitter.value\n    };\n\n    console.log(contact);\n\n    //console.log(`Saving the following contact: ${JSON.stringify(contact)}`)\n    storage.setItem('contacts', JSON.stringify([contact]));\n    renderContacts();\n  });\n});\n\n//# sourceURL=webpack:///./src/app.js?");
+
+/***/ })
+
+/******/ });

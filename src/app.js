@@ -16,8 +16,9 @@ const renderContacts = () => {
   } else {
     div.innerHTML = '<p>You have no contacts in your address book</p>'
   }
-  let div = document.createElement('.contact-list')
 }
+  //let div = document.createElement('.contact-list')
+
 document.addEventListener('DOMContentLoaded', () => {
   renderContacts()
   const addContactForm = document.querySelector('.new-contact-form')
@@ -39,7 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log(contact)
 
-    console.log(`Saving the following contact: ${JSON.stringify(contact)}`)
+    //console.log(`Saving the following contact: ${JSON.stringify(contact)}`)
     storage.setItem('contacts', JSON.stringify([contact]))
+    renderContacts()
   })
 })
