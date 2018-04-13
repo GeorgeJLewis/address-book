@@ -11,7 +11,7 @@ class AddressBookWorld {
   //open the homepage using puppeteer
   //async/await
   async openHomePage() {
-    this.browser = await puppeteer.launch({headless: false, slowMo: 40})
+    this.browser = await puppeteer.launch({headless: false, slowmo: 40})
     this.page = await this.browser.newPage()
     await this.page.goto(HOME_PAGE)
   }
@@ -52,8 +52,7 @@ class AddressBookWorld {
     const actualCount = await this.page.evaluate(
       () => {
          return JSON.parse(window.localStorage.getItem('contacts')).length
-      }
-    )
+      })
 
     expect(actualCount).to.be.eq(expectedCount)
   }
