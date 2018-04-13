@@ -3,6 +3,7 @@ const renderContacts = () => {
   let div = document.querySelector('.contact-list')
   const contacts = JSON.parse(storage.getItem('contacts'))
   if (contacts) {
+    div.innerHTML = ''
     const ul = document.createElement('ul')
     contacts.forEach(contact => {
       let li = document.createElement('li')
@@ -17,6 +18,17 @@ const renderContacts = () => {
   } else {
     div.innerHTML = '<p>You have no contacts in your address book</p>'
   }
+}
+
+const resetFormField = () => {
+  const addContactForm = document.querySelector('.new-contact-form')
+
+  addContactForm.elements.name.value = ''
+  addContactForm.elements.email.value = ''
+  addContactForm.elements.phone.value = ''
+  addContactForm.elements.company.value = ''
+  addContactForm.elements.notes.value = ''
+  addContactForm.elements.twitter.value = ''
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,8 +52,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log(contact)
 
+    // let contacts
+    // if (JSON.parse(storage.getItem('contacts'))) {
+    //   contacts = JSON.parse(storage.getItem('contacts'))
+    //
+    // } else {
+    //   contacts = []
+    // }
+    let contacts = JSON.parse(storage.getItem('contacts')) || []
+
+    contacts.push(contact)
     //console.log(`Saving the following contact: ${JSON.stringify(contact)}`)
-    storage.setItem('contacts', JSON.stringify([contact]))
+    storage.setItem('contacts', JSON.stringify(contact))
     renderContacts()
+    resetFormField()
   })
 })
