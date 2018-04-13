@@ -22,14 +22,15 @@ class AddressBookWorld {
 
   async pageHasTextContent(expectedContent) {
     const pageContent = await this.page.content()
-    const actualContent = pageContent.match(expectedContent)[0]
+    let match = pageContent.match(expectedContent)
+    let actualContent = match[0]
 
     expect(actualContent).to.be.eq(expectedContent)
   }
 
   async pageDoesNotHaveTextContent(unexpectedContent) {
     const pageContent = await this.page.content()
-    const actualContent = pageContent.match(unexpectedContent)
+    let actualContent = pageContent.match(unexpectedContent)
 
     expect(actualContent).to.be.eq(null)
   }
