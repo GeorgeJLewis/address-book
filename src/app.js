@@ -52,7 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
   addContactForm.hidden = true
 
   addContactBtn.addEventListener('click', event => {
-    addContactForm.hidden = false
+    if(addContactForm.hidden == true){
+      addContactForm.hidden = false
+      addContactBtn.innerHTML = 'Cancel'
+    } else {
+      addContactForm.hidden = true
+      addContactBtn.innerHTML = 'Add Contacts'
+
+    }
+
+
   })
 
   addContactForm.addEventListener('submit', event => {
