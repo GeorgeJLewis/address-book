@@ -43,3 +43,6 @@ Scenario: User creates multiple contacts
   And I should see "John Doe"
   And I should see "Jane Doe"
   And I should no see "You have no contacts in your address book"
+
+  Scenario: Users experience the page
+    

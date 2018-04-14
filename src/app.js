@@ -4,6 +4,7 @@ const renderContacts = () => {
   const contacts = JSON.parse(storage.getItem('contacts'))
 
   let div = document.querySelector('.contact-list')
+  // let button = document.querySelector('.hide-form')
 
   if (contacts) {
     div.innerHTML = ''
@@ -37,9 +38,22 @@ const resetFormField = () => {
   addContactForm.elements.twitter.value = ''
 }
 
+const hideForm = () => {
+    console.log('hide form');
+    const addContactForm = document.querySelector('.new-contact-form')
+    addContactForm.hidden = true
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderContacts()
   const addContactForm = document.querySelector('.new-contact-form')
+  const addContactBtn = document.querySelector('.add-contact')
+
+  addContactForm.hidden = true
+
+  addContactBtn.addEventListener('click', event => {
+    addContactForm.hidden = false
+  })
 
   addContactForm.addEventListener('submit', event => {
     event.preventDefault()
@@ -65,5 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
     storage.setItem('contacts', JSON.stringify(contacts))
     renderContacts()
     resetFormField()
+    hideForm()
   })
 })
