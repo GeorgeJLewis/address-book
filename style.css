@@ -1,25 +1,45 @@
 h1 {
   font-style: italic;
   font-size: 40px;
+  text-decoration: underline;
+  text-decoration-style: solid;
 }
 
 body {
-    background-color: #d4ac6e;
+  background-color: #e3e0cc;
+  border: 15px solid #b9b0b0;
 }
 
 form {
-  font-family : inherit;
-  font-size   : 100%;
+  width: 300px;
+  border: 1px solid black;
+  padding: 30px 50px 75px 90px;
+  box-shadow: 5px 5px;
+  position: static;
 }
 
 label {
   display: inline-block;
-  text-align: center;
+  text-align: left;
   width: 100px;
-  vertical-align: top;
+  vertical-align: center;
   font-weight: bold;
 }
 
+input {
+  text-align: right;
+  border: 1px solid;
+  padding: 10px;
+  /* box-shadow: 5px 10px #888888; */
+}
+
+textarea {
+  border: 1px solid;
+  padding: 10px;
+  /* box-shadow: 5px 10px #888888; */
+}
+
 ul {
+  text-align: left;
   list-style-type: none;
 }
