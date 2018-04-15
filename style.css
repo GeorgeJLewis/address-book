@@ -11,10 +11,15 @@ form {
   font-family : inherit;
   font-size   : 100%;
 }
+
 label {
   display: inline-block;
   text-align: center;
   width: 100px;
   vertical-align: top;
   font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
 }

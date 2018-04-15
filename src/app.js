@@ -58,10 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       addContactForm.hidden = true
       addContactBtn.innerHTML = 'Add Contacts'
-
     }
-
-
   })
 
   addContactForm.addEventListener('submit', event => {

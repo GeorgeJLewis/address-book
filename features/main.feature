@@ -45,4 +45,5 @@ Scenario: User creates multiple contacts
   And I should no see "You have no contacts in your address book"
 
   Scenario: Users experience the page
-    
+    Given I visit the site
+    Then I should see "Cancel"
