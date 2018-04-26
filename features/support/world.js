@@ -6,6 +6,7 @@ const HOME_PAGE = 'http://localhost:3000'
 
 class AddressBookWorld {
   constructor() {}
+<<<<<<< HEAD
 
 async openHomePage() {
   this.browser = await puppeteer.launch({headless: false, slowmo: 40})
@@ -66,6 +67,28 @@ async checkContactStorageCount(expectedCount) {
        throw `${btnName} button is not defined`
        break
     }
+=======
+  //open the homepage using puppeteer
+  //async/await
+  async openHomePage() {
+    this.browser = await puppeteer.launch()
+    this.page = await this.browser.newPage()
+    await this.page.goto(HOME_PAGE)
+>>>>>>> c18fd234d8e0a6bb66e884b009374c7de3a9b3cc
+  }
+
+  async closeHomePage() {
+    await this.browser.close()
+  }
+
+  async pageHasTextContent(expectedContent) {
+    const pageContent = await this.page.content()
+    console.log(pageContent)
+    let match = pageContent.match(expectedContent)
+    console.log(match)
+    let actualContent = match[0]
+
+    expect(actualContent).to.be.eq(expectedContent)
   }
 }
 
